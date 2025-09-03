@@ -9,7 +9,7 @@ from django.shortcuts import redirect
 @login_required
 def producto_list(request):
     q = request.GET.get('q','').strip()
-    productos = Producto.objects.all()
+    productos = Producto.objects.all().order_by('id') #agregue el orden del id
     if q:
         productos = productos.filter(nombre__icontains=q)
     return render(request, 'producto_list.html', {'productos': productos, 'q': q})
