@@ -11,8 +11,8 @@
 ---
 
 ### 🔮 Próximos pasos sugeridos
-- Agregar confirmación antes de eliminar un producto.  
 - Mejorar la búsqueda para incluir ID, categorías o filtros avanzados.  
 - Optimizar la interfaz del buscador (autocompletado, resultados dinámicos).  
+- Implementar paginación para listas largas de productos.  
 
 ---
