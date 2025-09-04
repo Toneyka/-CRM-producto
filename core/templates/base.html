@@ -10,15 +10,31 @@
 <nav class="navbar navbar-expand-lg bg-dark navbar-dark mb-4">
   <div class="container">
     <a class="navbar-brand" href="{% url 'producto_list' %}">Productos</a>
-    <div class="collapse navbar-collapse">
-      <ul class="navbar-nav ms-auto">
+
+    <!-- Toggler para mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false"
+            aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <!-- ms-auto para empujar a la derecha; align-items-center para centrar vertical -->
+      <ul class="navbar-nav ms-auto align-items-center gap-2">
         {% if request.user.is_authenticated %}
-          <li class="nav-item"><span class="navbar-text me-3">Hola, {{ request.user.username }}</span></li>
-          <form method="post" action="{% url 'logout' %}">
-            {% csrf_token %}
-             <button type="submit" class="nav-link btn btn-link">Salir</button>
-          </form>
-          <li class="nav-item"><a class="nav-link" href="{% url 'login' %}">Ingresar</a></li>
+          <li class="nav-item">
+            <span class="navbar-text">Hola, {{ request.user.username }}</span>
+          </li>
+          <li class="nav-item">
+            <form method="post" action="{% url 'logout' %}" class="m-0 d-inline">
+              {% csrf_token %}
+              <button type="submit" class="btn btn-outline-light btn-sm">Salir</button>
+            </form>
+          </li>
+        {% else %}
+          <li class="nav-item">
+            <a class="btn btn-outline-light btn-sm" href="{% url 'login' %}">Ingresar</a>
+          </li>
         {% endif %}
       </ul>
     </div>
